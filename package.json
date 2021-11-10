@@ -17,6 +17,7 @@
     "next": "12.0.3",
     "next-plugin-preact": "3.0.6",
     "preact": "10.5.15",
+    "preact-render-to-string": "5.1.19",
     "preact-ssr-prepass": "1.2.0",
     "prismic-dom": "2.2.6",
     "prismic-javascript": "npm:@prismicio/client@5.1.0",
