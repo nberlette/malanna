@@ -1,3 +1,5 @@
-export default function Container({ children }) {
-  return <div className="container mx-auto px-5">{children}</div>
+import cn from 'classnames'
+
+export default function Container({ children, ...props }) {
+  return <div className={cn("container mx-auto px-5")} ...props>{children}</div>
 }

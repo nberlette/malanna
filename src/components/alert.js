@@ -1,8 +1,8 @@
-import Container from './container'
+import Container from '@components/container'
 import cn from 'classnames'
-import { EXAMPLE_PATH } from '../lib/constants'
+import { GITHUB_URL } from '@lib/constants'
 
-export default function Alert({ preview }) {
+export default function Alert({ preview, success, error }) {
   return (
     <div
       className={cn('border-b', {
@@ -27,9 +27,9 @@ export default function Alert({ preview }) {
             <>
               The source code for this blog is{' '}
               <a
-                href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
-                className="underline hover:text-success duration-200 transition-colors"
-              >
+                href={GITHUB_URL}
+		className={cn("underline hover:shadow-sm", {"hover:text-success": !!success && !error, "hover:text-warning": !!error && !success}, "duration-300 transition-all")}
+	      >
                 available on GitHub
               </a>
               .

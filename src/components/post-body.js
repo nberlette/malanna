@@ -1,4 +1,4 @@
-import markdownStyles from './markdown-styles.module.css'
+import markdownStyles from '@styles/markdown.module.css'
 import { RichText } from 'prismic-reactjs'
 
 export default function PostBody({ content }) {
@@ -10,3 +10,4 @@ export default function PostBody({ content }) {
     </div>
   )
 }
+

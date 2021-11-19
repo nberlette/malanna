@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import Avatar from '../components/avatar'
-import Date from '../components/date'
-import CoverImage from '../components/cover-image'
+import Avatar from '@components/avatar'
+import PostDate from '@components/date'
+import CoverImage from '@components/cover-image'
 
 export default function HeroPost({
   title,
@@ -31,7 +31,7 @@ export default function HeroPost({
             </Link>
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
-            <Date dateString={date} />
+            <PostDate dateString={date} />
           </div>
         </div>
         <div>
@@ -42,3 +42,4 @@ export default function HeroPost({
     </section>
   )
 }
+

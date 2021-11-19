@@ -5,3 +5,4 @@ export default function PostTitle({ children }) {
     </h1>
   )
 }
+

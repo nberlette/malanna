@@ -1,10 +1,9 @@
 import Prismic from 'prismic-javascript'
+import pkg from '../../package.json'
 
-const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME
-
+const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME || pkg.prismic.repository;
 const REF_API_URL = `https://${REPOSITORY}.cdn.prismic.io/api/v2`
 const GRAPHQL_API_URL = `https://${REPOSITORY}.cdn.prismic.io/graphql`
-
 export const API_TOKEN = process.env.PRISMIC_API_TOKEN
 export const API_LOCALE = process.env.PRISMIC_REPOSITORY_LOCALE
 
@@ -19,22 +18,25 @@ async function fetchAPI(query, { previewData, variables } = {}) {
     {
       headers: {
         'Prismic-Ref': previewData?.ref || prismicAPI.masterRef.ref,
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json;charset=utf-8;',
         'Accept-Language': API_LOCALE,
-        Authorization: `Token ${API_TOKEN}`,
+        'Authorization': `Token ${API_TOKEN}`,
       },
     }
   )
 
   if (res.status !== 200) {
-    console.log(await res.text())
-    throw new Error('Failed to fetch API')
+    const responseText = await res.text()
+    console.error('[ERROR:%s] %s', res.status, responseText)
+    if (!passThroughOnException) throw new Error('Failed to fetch API')
+    return null;
   }
 
   const json = await res.json()
   if (json.errors) {
     console.error(json.errors)
-    throw new Error('Failed to fetch API')
+    if (!passThroughOnException) throw new Error('Failed to fetch API')
+    return json.errors; 
   }
   return json.data
 }
@@ -88,7 +90,8 @@ export async function getAllPostsForHome(previewData) {
   return data.allPosts.edges
 }
 
-export async function getPostAndMorePosts(slug, previewData) {
+export async function getPostAndMorePosts(slug, previewData, { morePostsCursor = 0, morePostsLimit = 2 }) {
+
   const data = await fetchAPI(
     `
   query PostBySlug($slug: String!, $lang: String!) {
@@ -108,7 +111,7 @@ export async function getPostAndMorePosts(slug, previewData) {
       }
     }
 
-   morePosts: allPosts(sortBy: date_DESC, first: 3) {
+   morePosts: allPosts(sortBy: date_DESC, first: ${(morePostsLimit || 2)+1}) {
       edges {
         node {
           title
@@ -141,7 +144,8 @@ export async function getPostAndMorePosts(slug, previewData) {
 
   data.morePosts = data.morePosts.edges
     .filter(({ node }) => node._meta.uid !== slug)
-    .slice(0, 2)
+    .slice(morePostsCursor || 0, morePostsLimit || 2)
 
   return data
 }
+
