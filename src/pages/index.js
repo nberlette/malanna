@@ -1,11 +1,13 @@
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
-import { getAllPostsForHome } from '../lib/api'
+import Container from '@components/container'
+import MoreStories from '@components/more-stories'
+import HeroPost from '@components/hero-post'
+import Intro from '@components/intro'
+import Layout from '@components/layout'
+import { getAllPostsForHome } from '@lib/api'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import {
+  SITE_TITLE, SITE_NAME, SITE_URL, SITE_AUTHOR,
+} from '@lib/constants'
 
 export default function Index({ preview, allPosts }) {
   const heroPost = allPosts[0].node
@@ -14,7 +16,7 @@ export default function Index({ preview, allPosts }) {
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>{SITE_TITLE}</title>
         </Head>
         <Container>
           <Intro />
@@ -41,3 +43,4 @@ export async function getStaticProps({ preview = false, previewData }) {
     props: { preview, allPosts },
   }
 }
+
