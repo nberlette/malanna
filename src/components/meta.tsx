@@ -11,26 +11,26 @@ import {
   SITE_TWITTER,
   PRISMIC_URL,
   GITHUB_URL,
+  RSS_URL,
   MANIFEST_URL,
   FAVICON_SVG as FAVICON_URL,
   OG_IMAGE_URL_DARK as OG_IMAGE_URL
 } from '@lib/constants';
 
-export default function Meta ({ props, children }) {
-  
-  const title = props.title ?? SITE_TITLE;
-  const description = props.description ?? SITE_DESCRIPTION;
-  const keywords = props.keywords ?? SITE_KEYWORDS;
-  const author = props.author ?? SITE_AUTHOR;
-  const twitter = props.twitter ?? SITE_TWITTER;
-  const coverImage = props.image ?? OG_IMAGE_URL;
-  const favicon = props.favicon ?? FAVICON_URL;
-  const url = props.url ?? SITE_URL;
-  const name = props.name ?? SITE_NAME;
-  const themeColor = props.themeColor ?? THEME_COLOR;
-  const bgColor = props.bgColor ?? BG_COLOR;
-  const pageType = props.pageType ?? 'website';
-
+export default function Meta ({ props, children }) { 
+  const title = props?.title || SITE_TITLE;
+  const description = props?.description || SITE_DESCRIPTION;
+  const keywords = props?.keywords || SITE_KEYWORDS;
+  const author = props?.author || SITE_AUTHOR;
+  const twitter = props?.twitter || SITE_TWITTER;
+  const coverImage = props?.image || OG_IMAGE_URL;
+  const favicon = props?.favicon || FAVICON_URL;
+  const url = props?.url || SITE_URL;
+  const name = props?.name || SITE_NAME;
+  const themeColor = props?.themeColor || THEME_COLOR;
+  const bgColor = props?.bgColor || BG_COLOR;
+  const pageType = props?.pageType || 'website';
+ 
   return (
     <Head>
       <link
@@ -58,7 +58,7 @@ export default function Meta ({ props, children }) {
       />
       <link rel="shortcut icon" href={favicon || '/favicon.ico'} />
       <meta name="msapplication-TileColor" content={themeColor || '#000' } />
-      <meta name="msapplication-config" content={BROWSERCONFIG_URL || "/browserconfig.xml"} />
+      <meta name="msapplication-config" content="/browserconfig.xml" />
       <meta name="theme-color" content={themeColor || '#000'} />
       <link rel="alternate" type="application/rss+xml" href={RSS_URL || '/feed.xml'} />
       

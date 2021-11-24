@@ -1,4 +1,4 @@
-import withPreact from 'next-plugin-preact';
+import withPreact from 'next-plugin-preact'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,6 +11,9 @@ const nextConfig = {
     domains: [
       'icns.vercel.app',
       'icns.imgix.net',
+      'images.prismic.io',
+      'malanna.page',
+      'static.malanna.page',
       'raw.githubusercontent.com',
       'user-images.githubusercontent.com'
     ],
@@ -47,8 +50,8 @@ const nextConfig = {
     return [
       // standard page rewrite, passing :slug parameter to the destination
       {
-        source: '/photo-:slug/?',
-	destination: '/photos/:slug/',
+        source: '/photo-:slug',
+	destination: '/photos/:slug',
       },
       // using Next Rewrites to mask our Prismic CMS URL
       {
@@ -68,7 +71,7 @@ const nextConfig = {
     return [
       // permanent redirect from /repo/ to our GitHub Repository Readme
       {
-        source: '/repo/?',
+        source: '/repo',
 	destination: 'https://github.com/nberlette/malanna#readme',
 	permanent: true
       },

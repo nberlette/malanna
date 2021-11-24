@@ -1,7 +1,7 @@
-import Prismic from 'prismic-javascript'
-import pkg from '../../package.json'
+import Prismic from 'prismic-javascript';
+import pkg from '../../package.json';
 
-const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME || pkg.prismic.repository;
+const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME || pkg['prismic']?.repository;
 const REF_API_URL = `https://${REPOSITORY}.cdn.prismic.io/api/v2`
 const GRAPHQL_API_URL = `https://${REPOSITORY}.cdn.prismic.io/graphql`
 export const API_TOKEN = process.env.PRISMIC_API_TOKEN
@@ -11,7 +11,15 @@ export const PrismicClient = Prismic.client(REF_API_URL, {
   accessToken: API_TOKEN,
 })
 
-async function fetchAPI(query, { previewData, variables } = {}) {
+export type FetchAPIOptions = {
+  previewData?: any,
+  variables?: any,
+  passThroughOnException?: boolean,
+  morePostsCursor?: number,
+  morePostsLimit?: number
+}
+
+async function fetchAPI(query, { previewData, variables, passThroughOnException }: FetchAPIOptions = {}) {
   const prismicAPI = await PrismicClient.getApi()
   const res = await fetch(
     `${GRAPHQL_API_URL}?query=${query}&variables=${JSON.stringify(variables)}`,
@@ -58,7 +66,9 @@ export async function getAllPostsWithSlug() {
   return data?.allPosts?.edges
 }
 
-export async function getAllPostsForHome(previewData) {
+export async function getAllPostsForHome(
+  { previewData = null, variables = { lang: API_LOCALE }, passThroughOnException = false }: FetchAPIOptions = {}
+): Promise<any> {
   const data = await fetchAPI(
     `
     query {
@@ -84,13 +94,18 @@ export async function getAllPostsForHome(previewData) {
       }
     }
   `,
-    { previewData }
+    {
+      previewData,
+      variables
+    }
   )
 
-  return data.allPosts.edges
+  return data.allPosts.edges || Promise.resolve([]);
 }
 
-export async function getPostAndMorePosts(slug, previewData, { morePostsCursor = 0, morePostsLimit = 2 }) {
+export async function getPostAndMorePosts(slug: string,
+  { previewData = null, morePostsCursor = 0, morePostsLimit = 2 }: FetchAPIOptions = {}
+): Promise<any> {
 
   const data = await fetchAPI(
     `

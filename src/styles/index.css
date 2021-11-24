@@ -1,5 +1,52 @@
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
+@layer components {
+  :root {
+    --link-underline-color: #234;
+    --link-underline-height: 0.05em;
+    --link-underline-transition: 0.33s ease-in;
+    --link-underline-hover-color: #123;
+    --link-underline-hover-transform: scaleX(1);
+  }
+
+  .nav a,
+  .nav span {
+    white-space: nowrap;
+  }
+
+  a {
+    color: #234;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.33s;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: #123;
+    text-decoration: none !important;
+  }
+
+  a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: var(--link-underline-height, 1px);
+    bottom: 0;
+    left: 0;
+    background-color: var(--link-underline-color, #234);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: var(--link-underline-transition, 0.5s);
+  }
+
+  a:hover:before {
+    visibility: visible;
+    background-color: var(--link-underline-hover-color, #123);
+    transform: var(--link-underline-hover-transform, scaleX(1));
+  }
+
+}
 /* purgecss end ignore */
 @tailwind utilities;

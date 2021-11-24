@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import cn from 'classnames'
+import cn from 'classnames';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function CoverImage ({ 
   title, 
@@ -11,7 +11,8 @@ export default function CoverImage ({
   height = 1000,
   ...props
 }) {
-  props.alt = props.alt || `Cover Image for ${title}`;
+  // props.alt = props.alt || `Cover Image for ${title}`;
+  
   const image = (
     <Image
       width={width || 2000}
@@ -20,15 +21,14 @@ export default function CoverImage ({
         'hover:shadow-medium transition-shadow duration-200': slug,
       }, ...classes)}
       src={url}
-      placeholder={'blur'}
-      ...props
+      // placeholder={'blur'}
     />
-  )
+  );
 
   return (
     <div className={cn('sm:mx-0')}>
       {slug ? (
-        <Link href={`/posts/${slug}`} as={`/posts/[slug]`}>
+        <Link href={`/posts/${slug}`}>
           <a aria-label={title} title={title}>{image}</a>
         </Link>
       ) : (

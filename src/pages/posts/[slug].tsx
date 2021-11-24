@@ -1,26 +1,26 @@
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import ErrorPage from 'next/error'
 import Container from '@components/container'
-import PostBody from '@components/post-body'
-import MoreStories from '@components/more-stories'
 import Header from '@components/header'
-import PostHeader from '@components/post-header'
-import SectionSeparator from '@components/section-separator'
 import Layout from '@components/layout'
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api'
+import MoreStories from '@components/more-stories'
+import PostBody from '@components/post-body'
+import PostHeader from '@components/post-header'
 import PostTitle from '@components/post-title'
+import SectionSeparator from '@components/section-separator'
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api'
 import { CMS_NAME } from '@lib/constants'
+import ErrorPage from 'next/error'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
   if (!router.isFallback && !post?._meta?.uid) {
     return <ErrorPage statusCode={404} />
   }
-
+  const coverImageUrl = post?.coverimage?.url;
   return (
     <Layout preview={preview}>
-      <Container>
+      <Container className="bg-light-100">
         <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -31,8 +31,8 @@ export default function Post({ post, morePosts, preview }) {
                 <title>
                   {post.title[0].text} | Next.js Blog Example with {CMS_NAME}
                 </title>
-                <meta property="og:image" content={post.coverimage.url} />
-		<meta name="twitter:image" content={post.coverimage.url} />
+                <meta property="og:image" content={coverImageUrl} />
+		            <meta name="twitter:image" content={coverImageUrl} />
               </Head>
               <PostHeader
                 title={post.title}
@@ -54,7 +54,8 @@ export default function Post({ post, morePosts, preview }) {
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const data = await getPostAndMorePosts(params.slug, previewData)
+  const { slug } = params;
+  const data = await getPostAndMorePosts(slug, previewData)
 
   return {
     props: {
