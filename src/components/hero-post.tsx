@@ -1,8 +1,17 @@
+import Avatar from '@components/avatar'
+import CoverImage from '@components/cover-image'
+import PostDate from '@components/date'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import Avatar from '@components/avatar'
-import PostDate from '@components/date'
-import CoverImage from '@components/cover-image'
+
+type HeroPostProps = {
+  title?: any,
+  coverImage?: any,
+  date?: any,
+  excerpt?: any,
+  author?: any,
+  slug?: string | any
+}
 
 export default function HeroPost({
   title,
@@ -11,7 +20,7 @@ export default function HeroPost({
   excerpt,
   author,
   slug,
-}) {
+}: HeroPostProps = {}) {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -21,16 +30,16 @@ export default function HeroPost({
           url={coverImage.url}
         />
       </div>
-      <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
+      <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8">
         <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+          <h3 className="mb-4 leading-tight text-4xl lg:text-6xl">
             <Link href={`/posts/${slug}`}>
               <a className="hover:underline">
                 <RichText render={title} />
               </a>
             </Link>
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
+          <div className="text-lg mb-4 md:mb-0">
             <PostDate dateString={date} />
           </div>
         </div>

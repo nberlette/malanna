@@ -2,15 +2,23 @@ import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function CoverImage ({ 
-  title, 
-  url, 
+type CoverImageProps = {
+  title?: string,
+  url?: string | any,
+  slug?: string | any,
+  classes?: any[] | any,
+  width?: number | any,
+  height?: number | any
+}
+
+export default function CoverImage({
+  title,
+  url,
   slug,
   classes = [],
   width = 2000,
-  height = 1000,
-  ...props
-}) {
+  height = 1000
+}: CoverImageProps = {}) {
   // props.alt = props.alt || `Cover Image for ${title}`;
   
   const image = (

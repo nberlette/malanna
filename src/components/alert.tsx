@@ -9,8 +9,8 @@ export type AlertProps = {
   children?: any
 }
 
-export default function Alert({ preview, success, error }: AlertProps = { preview: false, success: false, error: false}) {
-  if (!SHOW_GITHUB_BANNER) return (<></>);
+export default function Alert({ preview, success, error }: AlertProps = {}) {
+  if (!SHOW_GITHUB_BANNER) return;
     return (
       <div
         className={cn('border-b', {

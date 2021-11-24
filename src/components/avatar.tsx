@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-export default function Avatar({ name, picture }) {
+export default function Avatar({ name, picture }: { name?: any[], picture?: any } = {}) {
   return (
-    <div className="flex items-center">
-      <div className="w-12 h-12 relative mr-4">
+    <section className="avatar">
+      <div className="inner">
         <Image
           src={picture.url}
           layout="fill"
@@ -11,8 +11,8 @@ export default function Avatar({ name, picture }) {
           alt={name[0].text}
         />
       </div>
-      <div className="text-xl font-bold">{name}</div>
-    </div>
+      <div className="name">{name}</div>
+    </section>
   )
 }
 

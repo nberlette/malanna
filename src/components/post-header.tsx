@@ -1,27 +1,27 @@
+import Avatar from '@components/avatar'
+import CoverImage from '@components/cover-image'
+import Date from '@components/date'
+import PostTitle from '@components/post-title'
 import { RichText } from 'prismic-reactjs'
-import Avatar from '../components/avatar'
-import Date from '../components/date'
-import CoverImage from '../components/cover-image'
-import PostTitle from '../components/post-title'
 
-export default function PostHeader({ title, coverImage, date, author }) {
+export default function PostHeader({ title, coverImage, date, author }: { title?: any; coverImage?: any; date?: any; author?: any } = {}) {
   return (
-    <>
+    <section className="post-header">
       <PostTitle>{title[0].text}</PostTitle>
-      <div className="hidden md:block md:mb-12">
+      <div className="author">
         {author && <Avatar name={author.name} picture={author.picture} />}
       </div>
-      <div className="mb-8 md:mb-16 sm:mx-0">
+      <div className="cover-image">
         <CoverImage title={RichText.asText(title)} url={coverImage.url} />
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
+      <div className="meta">
+        <div className="author">
           {author && <Avatar name={author.name} picture={author.picture} />}
         </div>
-        <div className="mb-6 text-lg">
+        <div className="date">
           <Date dateString={date} />
         </div>
       </div>
-    </>
+    </section>
   )
 }
