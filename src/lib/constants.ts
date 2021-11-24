@@ -17,6 +17,16 @@ export const SITE_URL = 'https://malanna.page'
 export const PRISMIC_URL = 'https://malanna.prismic.io'
 export const GITHUB_URL = 'https://github.com/nberlette/malanna'
 
+// footer links
+export const FOOTER_LINK_EM = {
+  url: 'https://n.berlette.com',
+  text: 'Part of the Berlette Family'
+}
+export const FOOTER_LINK = {
+  url: GITHUB_URL,
+  text: 'Edit on GitHub'
+}
+
 // where to redirect the user once they exit preview mode
 export const EXIT_PREVIEW_REDIRECT_URL = '/'
 
