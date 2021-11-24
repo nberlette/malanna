@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 type CoverImageProps = {
-  title?: string,
+  title?: string | any,
   url?: string | any,
   slug?: string | any,
   classes?: any[] | any,
@@ -23,6 +23,7 @@ export default function CoverImage({
   
   const image = (
     <Image
+      alt={title}
       width={width || 2000}
       height={height || 1000}
       className={cn('shadow-small', {
