@@ -71,7 +71,7 @@
       @apply font-bold mb-8 leading-tight tracking-tighter text-6xl md:text-7xl;
     }
     section.post--more-stories > div.section-content {
-      @apply mb-32 grid grid-cols-1 row-gap-20 md:grid-cols-2 md:col-gap-16 md:row-gap-32 lg:col-gap-32;
+      @apply mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32;
     }
   section.intro {
     @apply flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12;
