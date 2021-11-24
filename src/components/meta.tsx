@@ -1,23 +1,29 @@
-import Head from 'next/head'
-import { 
-  THEME_COLOR,
-  BG_COLOR, 
-  SITE_NAME,
-  SITE_URL,
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  SITE_KEYWORDS,
-  SITE_AUTHOR,
-  SITE_TWITTER,
-  PRISMIC_URL,
-  GITHUB_URL,
-  RSS_URL,
-  MANIFEST_URL,
-  FAVICON_SVG as FAVICON_URL,
-  OG_IMAGE_URL_DARK as OG_IMAGE_URL
+import {
+  BG_COLOR, FAVICON_SVG as FAVICON_URL, MANIFEST_URL, OG_IMAGE_URL_DARK as OG_IMAGE_URL, RSS_URL, SITE_AUTHOR, SITE_DESCRIPTION,
+  SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_TWITTER, SITE_URL, THEME_COLOR
 } from '@lib/constants';
+import Head from 'next/head';
 
-export default function Meta ({ props, children }) { 
+type MetaProps = {
+  name?: string | any
+  title?: string | any
+  description?: string | any
+  keywords?: string | any
+  author?: string | any
+  twitter?: string | any
+  image?: string | any
+  favicon?: string | any
+  url?: string | any
+  themeColor?: string | any
+  bgColor?: string | any
+  pageType?: string | any
+}
+type MetaOptions = {
+  children?: any;
+  props?: MetaProps;
+}
+
+export default function Meta({ children, props }: MetaOptions) {
   const title = props?.title || SITE_TITLE;
   const description = props?.description || SITE_DESCRIPTION;
   const keywords = props?.keywords || SITE_KEYWORDS;

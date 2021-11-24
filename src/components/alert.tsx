@@ -2,7 +2,14 @@ import Container from '@components/container';
 import { GITHUB_URL, SHOW_GITHUB_BANNER } from '@lib/constants';
 import cn from 'classnames';
 
-export default function Alert({ preview, success, error }) {
+export type AlertProps = {
+  preview?: any,
+  success?: boolean,
+  error?: boolean,
+  children?: any
+}
+
+export default function Alert({ preview, success, error }: AlertProps = { preview: false, success: false, error: false}) {
   if (!SHOW_GITHUB_BANNER) return (<></>);
     return (
       <div
