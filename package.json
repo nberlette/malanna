@@ -1,8 +1,18 @@
 {
-  "name": "malanna.page",
-  "author": "Nicholas Berlette <nick@berlette.com>",
+  "name": "malanna",
+  "version": "0.2.1",
+  "author": {
+    "name": "Nicholas Berlette",
+    "email": "nick@berlette.com"
+  },
   "license": "MIT",
   "private": true,
+  "description": "A small memorial website celebrating the life of a furry little friend of mine, Malanna. Powered by TypeScript, Next.js v12, Preact, and Prismic.io. Deployed on Vercel.",
+  "repository": "nberlette/malanna",
+  "keywords": ["typescript", "next.js", "preact", "prismic", "ssg", "ssr", "malanna"],
+  "bugs": "https://github.com/nberlette/malanna/issues",
+  "homepage": "https://malanna.page",
+  "readme": "https://github.com/nberlette/malanna#readme",
   "scripts": {
     "dev": "next",
     "lint": "next lint",

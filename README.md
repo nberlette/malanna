@@ -1,32 +1,12 @@
-# A statically generated blog example using Next.js and Prismic
+# 🐈 Malanna.page
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using [Prismic](https://prismic.io/) as the data source.
+A small memorial website celebrating the life of a furry little friend of mine - Malanna. Currently there's just a couple placeholder images with some dummy text, but when I have some more time I'll upload a full photo gallery, maybe add some videos, and jot down some funny memories and stories I have regarding my loyal kitty of nearly 20 years.
 
-## Demo
-
-### [https://next-blog-prismic.vercel.app/](https://next-blog-prismic.vercel.app/)
+This is based on the [official Next.js example with Prismic](https://github.com/vercel/next.js/tree/canary/examples/cms-prismic), which I modified to run on Next.js v12 and Preact instead of React.  Deployed on Vercel, with content management by Prismic.io, and switched from JavaScript/JSX to run on TypeScript/TSX. 
 
 ## Deploy your own
 
-Once you have access to [the environment variables you'll need](#step-5-set-up-environment-variables), deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/cms-prismic&project-name=cms-prismic&repository-name=cms-prismic&env=PRISMIC_API_TOKEN,PRISMIC_REPOSITORY_NAME&envDescription=Required%20to%20connect%20the%20app%20with%20Prismic&envLink=https://vercel.link/cms-prismic-env)
-
-### Related examples
-
-- [WordPress](/examples/cms-wordpress)
-- [DatoCMS](/examples/cms-datocms)
-- [Sanity](/examples/cms-sanity)
-- [TakeShape](/examples/cms-takeshape)
-- [Contentful](/examples/cms-contentful)
-- [Strapi](/examples/cms-strapi)
-- [Agility CMS](/examples/cms-agilitycms)
-- [Cosmic](/examples/cms-cosmic)
-- [ButterCMS](/examples/cms-buttercms)
-- [Storyblok](/examples/cms-storyblok)
-- [Kontent](/examples/cms-kontent)
-- [Ghost](/examples/cms-ghost)
-- [Blog Starter](/examples/blog-starter)
 
 ## How to use
 
