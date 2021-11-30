@@ -1,13 +1,13 @@
 import Container from '@components/container'
-import MoreStories from '@components/more-stories'
 import HeroPost from '@components/hero-post'
 import Intro from '@components/intro'
 import Layout from '@components/layout'
+import MoreStories from '@components/more-stories'
 import { getAllPostsForHome } from '@lib/api'
-import Head from 'next/head'
 import {
-  SITE_TITLE, SITE_NAME, SITE_URL, SITE_AUTHOR,
+  SITE_TITLE
 } from '@lib/constants'
+import Head from 'next/head'
 
 export default function Index({ preview, allPosts }) {
   const heroPost = allPosts[0]?.node
@@ -18,7 +18,7 @@ export default function Index({ preview, allPosts }) {
         <Head>
           <title>{SITE_TITLE}</title>
         </Head>
-        <Container>
+        <Container> 
           <Intro />
           {heroPost && (
             <HeroPost
@@ -37,10 +37,12 @@ export default function Index({ preview, allPosts }) {
   )
 }
 
-export async function getStaticProps({ preview = false, previewData }) {
+export async function getServerSideProps({ preview = false, previewData }) {
   const allPosts = await getAllPostsForHome(previewData)
   return {
-    props: { preview, allPosts },
+    props: {
+      preview,
+      allPosts
+    },
   }
 }
-
