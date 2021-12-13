@@ -37,7 +37,7 @@ export default function Index({ preview, allPosts }) {
   )
 }
 
-export async function getStaticProps({ preview = false, previewData }) {
+export async function getServerSideProps({ preview = false, previewData }) {
   const allPosts = await getAllPostsForHome(previewData)
   return {
     props: {
