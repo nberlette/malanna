@@ -1,36 +1,25 @@
 import { PrismicClient } from '@lib/api'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-function linkResolver(doc) {
-  // Pretty URLs for known types
-  if (doc.type === 'post') {
-    return `/posts/${doc.uid}`
-  }
+type ObjStub = Record<any, unknown>
+const linkResolver = (doc: ObjStub): string => (doc.type === 'post') ? `/posts/${doc.uid}` : `/${doc.uid}`
 
-  // Fallback for other types, in case new custom types get created
-  return `/${doc.uid}`
-}
-
-export default async function preview(req, res) {
-  const { token: ref, documentId } = req.query;
+export default async function preview(req: NextApiRequest, res: NextApiResponse): Promise<any> {
+  const documentId: any = req?.query?.documentId;
+  const ref: any = req?.query?.token;
 
   // Check the token parameter against the Prismic SDK
-  const url = (await PrismicClient
-    .getPreviewResolver(ref, documentId)
-    .resolve(linkResolver, '/')
-  )
-
-  if (!url) return res.status(401).json({ message: 'Invalid token' });
-  
-  // Enable Preview Mode by setting the cookies
-  // we pass the ref here so the draft ref can be fetched later
-  res.setPreviewData({ ref })
-
-  // Redirect the user to the share endpoint from same origin. This is
-  // necessary due to a Chrome bug:
+  const url = (
+    await PrismicClient
+      .getPreviewResolver(ref, documentId)
+      .resolve(linkResolver, '/')
+  );
+  if (!url) {
+    return res.status(401).json({ message: 'Invalid token' });
+  }
+  // Enable Preview Mode: set cookie ref so the draft ref can be fetched later
+  res.setPreviewData({ ref });
   // https://bugs.chromium.org/p/chromium/issues/detail?id=696204
-  res.write(
-    `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0;url=${url}"><script>window.location.href='${url}';</script></head>`
-  )
-
-  res.end()
+  res.write(`<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0;url=${url}"><script>window.location.href='${url}';</script></head>`);
+  res.end();
 }

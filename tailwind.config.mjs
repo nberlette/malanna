@@ -1,7 +1,12 @@
-module.exports = {
+import require from '@lib/require';
+
+export default {
   mode: 'jit',
-  purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'media', // or 'media' or 'class'
+  purge: [
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}'
+  ],
+  darkMode: 'media', 
   theme: {
     extend: {
       colors: {

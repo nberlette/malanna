@@ -2,12 +2,13 @@ import withPreact from 'next-plugin-preact'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // v12 Rust Compiler (SWC): uncomment this if needed to disable
+
+  // v12 Rust Compiler (SWC) - uncomment to disable
   // swcMinify: false,
   
   // https://nextjs.org/docs/basic-features/image-optimization
   images: {
-    // https://nextjs.org/docs/basic-features/image-optimization#domains
+
     domains: [
       'icns.vercel.app',
       'icns.imgix.net',
@@ -51,17 +52,17 @@ const nextConfig = {
       // standard page rewrite, passing :slug parameter to the destination
       {
         source: '/photo-:slug',
-	destination: '/photos/:slug',
+        destination: '/photos/:slug',
       },
-      // using Next Rewrites to mask our Prismic CMS URL
+      // preview feature
       {
-	source: '/cms/:path*',
-	destination: 'https://malanna.prismic.io/:path',
+        source: '/preview/:path*',
+        destination: 'https://malanna.page/api/preview/:path',
       },
       // using Next Rewrites to mask our github repository
       {
         source: '/github/:path*',
-	destination: 'https://github.com/nberlette/malanna/:path'
+        destination: 'https://github.com/nberlette/malanna/:path'
       }
     ]
   },
@@ -72,8 +73,8 @@ const nextConfig = {
       // permanent redirect from /repo/ to our GitHub Repository Readme
       {
         source: '/repo',
-	destination: 'https://github.com/nberlette/malanna#readme',
-	permanent: true
+        destination: 'https://github.com/nberlette/malanna#readme',
+        permanent: true
       },
     ]
   },
