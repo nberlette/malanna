@@ -1,17 +1,11 @@
 import Prismic from 'prismic-javascript';
 import useSWR from 'swr';
-import pkg from '../../package.json';
+import { REPOSITORY, REF_API_URL, GRAPHQL_API_URL, API_TOKEN, API_LOCALE } from '@lib/constants'
 
 export const fetcher = (url: string, init?: any): Promise<any> =>
   fetch(url, init ?? null).then((res) => res.json())
 
 export const FetchSWR = (url: any, options?: any) => useSWR(url, fetcher, options)
-
-const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME || pkg['prismic']?.repository;
-const REF_API_URL = `https://${REPOSITORY}.cdn.prismic.io/api/v2`
-const GRAPHQL_API_URL = `https://${REPOSITORY}.cdn.prismic.io/graphql`
-export const API_TOKEN = process.env.PRISMIC_API_TOKEN
-export const API_LOCALE = process.env.PRISMIC_REPOSITORY_LOCALE
 
 export const PrismicClient = Prismic.client(REF_API_URL, {
   accessToken: API_TOKEN,
@@ -154,7 +148,7 @@ export async function getAllPostsForHome({
   return data.allPosts.edges || Promise.resolve([])
 }
 
-export async function useAllPostsHome({
+export async function useAllPostsForHome({
   preview,
   previewData,
   variables,

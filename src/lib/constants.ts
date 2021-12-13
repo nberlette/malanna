@@ -1,14 +1,22 @@
-// default config variables from original vercel demo
+import pkg from '../../package.json';
+export const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME || pkg?.prismic['repository'];
+export const REF_API_URL = `https://${REPOSITORY}.cdn.prismic.io/api/v2`
+export const GRAPHQL_API_URL = `https://${REPOSITORY}.cdn.prismic.io/graphql`
+export const API_TOKEN = process.env.PRISMIC_API_TOKEN;
+export const API_LOCALE = process.env.PRISMIC_REPOSITORY_LOCALE || pkg?.prismic['locale'] || 'en-US'
+
+// default config variables
 export const EXAMPLE_PATH = 'cms-prismic'
 export const CMS_NAME = 'Vercel'
 export const CMS_URL = 'https://vercel.com'
 
+// masthead banner at top of every page. same location as preview alert
 export const SHOW_GITHUB_BANNER = false;
 
 // basic site configurations and SEO
 export const SITE_NAME = 'Malanna'
 export const SITE_TITLE = "Malanna's Page"
-export const SITE_DESCRIPTION = 'Small memorial website for Malanna, the sweetest kitty there ever was. Statically generated with Next.js.'
+export const SITE_DESCRIPTION = 'Small memorial website for Malanna.'
 export const SITE_TAGLINE = "Remembering the sweetest kitty there ever was."
 export const SITE_KEYWORDS = 'malanna,malanna.page,memorial,rip,nberlette,next.js,nextjs,static,ssg,vercel'
 export const SITE_AUTHOR = 'Nicholas Berlette'

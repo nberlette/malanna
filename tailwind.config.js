@@ -1,6 +1,4 @@
-import require from '@lib/require';
-
-export default {
+module.exports = {
   mode: 'jit',
   purge: [
     './src/pages/**/*.{js,ts,jsx,tsx}',

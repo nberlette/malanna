@@ -10,7 +10,7 @@ export type AlertProps = {
 }
 
 export default function Alert({ preview, success, error }: AlertProps = {}) {
-  if (!SHOW_GITHUB_BANNER) return;
+  if (!SHOW_GITHUB_BANNER && !preview) return;
     return (
       <div
         className={cn('border-b', {
@@ -22,14 +22,15 @@ export default function Alert({ preview, success, error }: AlertProps = {}) {
           <div className="text-center text-sm py-2">
             {preview ? (
               <>
-                This is page is a preview.{' '}
+                <strong>
+                  This is page is a preview!{' '}
+                </strong>
                 <a
                   href="/api/exit-preview"
                   className="transition-colors duration-200 underline hover:text-cyan"
                 >
-                  Click here
+                  Click here to exit.
                 </a>{' '}
-                to exit preview mode.
               </>
             ) : (
               SHOW_GITHUB_BANNER && (
@@ -47,8 +48,7 @@ export default function Alert({ preview, success, error }: AlertProps = {}) {
                     )}
                   >
                     available on GitHub
-                  </a>
-                  .
+                  </a>.
                 </>
               )
             )}

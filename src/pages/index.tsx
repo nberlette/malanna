@@ -3,7 +3,7 @@ import HeroPost from '@components/hero-post'
 import Intro from '@components/intro'
 import Layout from '@components/layout'
 import MoreStories from '@components/more-stories'
-import { getAllPostsForHome } from '@lib/api'
+import { getAllPostsForHome, useAllPostsForHome } from '@lib/api'
 import {
   SITE_TITLE
 } from '@lib/constants'
@@ -37,7 +37,7 @@ export default function Index({ preview, allPosts }) {
   )
 }
 
-export async function getServerSideProps({ preview = false, previewData }) {
+export async function getStaticProps({ preview = false, previewData }) {
   const allPosts = await getAllPostsForHome(previewData)
   return {
     props: {
