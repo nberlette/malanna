@@ -1,23 +1,24 @@
-# nberlette/malanna/.gitpod.yml
+image: nberlette/gitpod-enhanced
+
 tasks:
-  - name: Dev Server
-    init: yarn install
-    command: yarn dev
+  - name: Malanna
+    init: pnpm install
+    command: pnpm dev
+
 ports:
-  - port: 3000
+  - port: 3000-5000
     onOpen: open-preview
-  - port: 5000
-    onOpen: open-browser
+
 github:
   prebuilds:
     master: true
     branches: true
-    pullRequests: false
+    pullRequests: true
     pullRequestsFromForks: false
     addBadge: true
     addCheck: true
-    addComment: false
+    addLabel: true
+
 vscode:
   extensions:
     - esbenp.prettier-vscode
-
