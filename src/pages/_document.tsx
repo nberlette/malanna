@@ -1,14 +1,17 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import Meta from '@components/meta';
+import GitHubCorner from '@components/github-corner';
+import { GITHUB_URL } from '@lib/constants';
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
-	  <Meta />
-	</Head>
+	        <Meta />
+	      </Head>
         <body>
+          <GitHubCorner url={GITHUB_URL} />
           <Main />
           <NextScript />
         </body>
