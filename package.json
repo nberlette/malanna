@@ -9,7 +9,15 @@
   },
   "repository": "nberlette/malanna",
   "description": "A small memorial website celebrating the life of a furry little friend of mine, Malanna. Powered by TypeScript, Next.js v12, Preact, and Prismic.io. Deployed on Vercel.",
-  "keywords": ["typescript", "next.js", "preact", "prismic", "ssg", "ssr", "malanna"],
+  "keywords": [
+    "typescript",
+    "next.js",
+    "preact",
+    "prismic",
+    "ssg",
+    "ssr",
+    "malanna"
+  ],
   "bugs": "https://github.com/nberlette/malanna/issues",
   "homepage": "https://malanna.page",
   "readme": "https://github.com/nberlette/malanna#readme",
@@ -49,6 +57,8 @@
     "swr": "1.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@prefresh/babel-plugin": "^0.4.0",
     "@tailwindcss/typography": "0.4.1",
     "@types/node": "16.11.9",
     "@types/react": "17.0.35",
@@ -56,8 +66,11 @@
     "eslint": "<8.0.0",
     "eslint-config-next": "12.0.3",
     "postcss": "8.4.5",
+    "sass": "^1.49.0",
     "tailwindcss": "2.2.19",
     "tslib": "2.3.1",
-    "typescript": "4.5.3"
+    "typescript": "4.5.3",
+    "webpack": "^5.0.0",
+    "windicss": "^3.4.3"
   }
 }
