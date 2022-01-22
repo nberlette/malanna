@@ -1,6 +1,17 @@
 import {
-  BG_COLOR, FAVICON_SVG as FAVICON_URL, MANIFEST_URL, OG_IMAGE_URL_DARK as OG_IMAGE_URL, RSS_URL, SITE_AUTHOR, SITE_DESCRIPTION,
-  SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_TWITTER, SITE_URL, THEME_COLOR
+  BG_COLOR,
+  FAVICON_SVG as FAVICON_URL,
+  MANIFEST_URL,
+  OG_IMAGE_URL_DARK as OG_IMAGE_URL,
+  RSS_URL,
+  SITE_AUTHOR,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_TWITTER,
+  SITE_URL,
+  THEME_COLOR
 } from '@lib/constants';
 import Head from 'next/head';
 
@@ -42,30 +53,31 @@ export default function Meta({ children, props }: MetaOptions) {
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
+        href="/apple-touch-icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon/favicon-32x32.png"
+        href="/favicon-32x32.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon/favicon-16x16.png"
+        href="/favicon-16x16.png"
       />
       <link rel="manifest" href={MANIFEST_URL || "/site.webmanifest"} />
       <link
         rel="mask-icon"
-        href="/favicon/safari-pinned-tab.svg"
+        href="/safari-pinned-tab.svg"
         color={THEME_COLOR}
       />
-      <link rel="shortcut icon" href={favicon || '/favicon.ico'} />
-      <meta name="msapplication-TileColor" content={themeColor || '#000' } />
+      <link rel="shortcut icon" href={favicon || '/favicon.png'} type="image/png" />
+      <link rel="icon" href={favicon || '/favicon.svg'} type="image/svg+xml" />
+      <meta name="msapplication-TileColor" content={themeColor || '#112233' } />
       <meta name="msapplication-config" content="/browserconfig.xml" />
-      <meta name="theme-color" content={themeColor || '#000'} />
+      <meta name="theme-color" content={themeColor || '#112233'} />
       <link rel="alternate" type="application/rss+xml" href={RSS_URL || '/feed.xml'} />
       
       <meta
@@ -83,7 +95,7 @@ export default function Meta({ children, props }: MetaOptions) {
       <meta
         name="canonical"
         content={url}
-	property="canonical"
+	      property="canonical"
       />
       <meta
         name="author"
