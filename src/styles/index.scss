@@ -1,0 +1,148 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+@layer components {
+  :root {
+    --link-underline-color: #234;
+    --link-underline-height: 0.05em;
+    --link-underline-transition: 0.33s ease-in;
+    --link-underline-hover-color: #123;
+    --link-underline-hover-transform: scaleX(1);
+  }
+
+  .nav a,
+  .nav span {
+    white-space: nowrap;
+  }
+
+  a {
+    color: #234;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.33s;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: #123;
+    text-decoration: none !important;
+  }
+
+  a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: var(--link-underline-height, 1px);
+    bottom: 0;
+    left: 0;
+    background-color: var(--link-underline-color, #234);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: var(--link-underline-transition, 0.5s);
+  }
+
+  a:not(.github-corner):hover:before {
+    visibility: visible;
+    background-color: var(--link-underline-hover-color, #123);
+    transform: var(--link-underline-hover-transform, scaleX(1));
+  }
+  .layout-wrapper {
+    @apply min-h-screen;
+  }
+
+  /* header.header {} */
+  header.header > .title {
+    @apply text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8;
+  }
+  header.header > .title::after {
+    content: ".";
+  }
+
+  .section-separator {
+    @apply border-accent-2 mt-28 mb-24;
+  }
+
+  .post-title {
+    @apply text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight;
+    @apply md:leading-none mb-12 text-center md:text-left;
+  }
+  /* section.post--more-stories {} */
+    section.post--more-stories > h2.section-title {
+      @apply font-bold mb-8 leading-tight tracking-tighter text-6xl md:text-7xl;
+    }
+    section.post--more-stories > div.section-content {
+      @apply mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32;
+    }
+  section.intro {
+    @apply flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12;
+  }
+    section.intro > .section-title {
+      @apply text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8;
+    }
+    section.intro > .section-subtitle {
+      @apply text-center md:text-left text-lg mt-5 md:pl-8;
+    }
+  .post-body {
+    @apply max-w-2xl mx-auto;
+  }
+  /* section.post-header {} */
+    section.post-header > .author {
+      @apply hidden md:block md:mb-12;
+    }
+    section.post-header > .cover-image {
+      @apply mb-8 md:mb-16 sm:mx-0;
+    }
+    section.post-header > .meta {
+      @apply max-w-2xl mx-auto;
+    }
+      section.post-header > .meta > .author {
+        @apply block md:hidden mb-6;
+      }
+      section.post-header > .meta > .date {
+        @apply mb-6 text-lg;
+      }
+  /* section.post-preview {} */
+    section.post-preview > .title {
+      @apply text-3xl mb-3 leading-snug;
+    }
+    section.post-preview > .cover-image {
+      @apply mb-5;
+    }
+    section.post-preview > .date {
+      @apply text-lg mb-4;
+    }
+    section.post-preview > .excerpt {
+      @apply text-lg leading-relaxed mb-4;
+    }
+  section.avatar {
+    @apply flex items-center;
+  }
+    section.avatar > .inner {
+      @apply h-12 mr-4 w-12 relative;
+    }
+    section.avatar > .name {
+      @apply font-bold text-xl;
+    }
+  footer.footer {
+    @apply bg-accent-1 border-t border-accent-2;
+  }
+    footer.footer .inner {
+      @apply py-28 flex flex-col lg:flex-row items-center;
+    }
+      footer.footer .inner > .tagline {
+        @apply text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2;
+      }
+      footer.footer .inner > .links {
+        @apply flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2;
+      }
+        footer.footer .inner > .links > .emphasized {
+          @apply mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold;
+          @apply py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0;
+        }
+        footer.footer .inner > .links > .regular {
+          @apply mx-3 font-bold hover:underline;
+        }
+
+}
+/* purgecss end ignore */
+@tailwind utilities;
