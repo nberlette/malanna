@@ -3,11 +3,32 @@ image: nberlette/gitpod-enhanced
 tasks:
   - name: Malanna
     init: pnpm install
-    command: pnpm dev
+    command: pnpm run dev
 
 ports:
   - port: 3000-5000
     onOpen: open-preview
+    visibility: public
+
+vscode:
+  extensions:
+    - esbenp.prettier-vscode
+    - editorconfig.editorconfig
+    - cschleiden.vscode-github-actions
+    - benjaminbenais.copilot-theme
+    - eamodio.gitlens
+    - jock.svg
+    - mrmlnc.vscode-scss
+    - heybourn.headwind
+    - takumii.markdowntable
+    - silvenon.mdx
+    - xyc.vscode-mdx-preview
+    - stefanprobst.remark-lint
+    - christian-kohler.npm-intellisense
+    - christian-kohler.path-intellisense
+    - eg2.vscode-npm-script
+    - gamunu.vscode-yarn
+    - bierner.markdown-preview-github-styles
 
 github:
   prebuilds:
@@ -18,7 +39,3 @@ github:
     addBadge: true
     addCheck: true
     addLabel: true
-
-vscode:
-  extensions:
-    - esbenp.prettier-vscode

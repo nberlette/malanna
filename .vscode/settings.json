@@ -1,4 +1,4 @@
 {
-  "svg.preview.background": "black",
+  "svg.preview.background": "white",
   "git.enableCommitSigning": true
 }
