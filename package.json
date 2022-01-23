@@ -5,9 +5,9 @@
   "private": true,
   "author": {
     "name": "Nicholas Berlette",
-    "email": "nick@berlette.com"
+    "email": "nick@berlette.com",
+    "url": "https://n.berlette.com"
   },
-  "repository": "nberlette/malanna",
   "description": "A small memorial website celebrating the life of a furry little friend of mine, Malanna. Powered by TypeScript, Next.js v12, Preact, and Prismic.io. Deployed on Vercel.",
   "keywords": [
     "typescript",
@@ -18,8 +18,9 @@
     "ssr",
     "malanna"
   ],
-  "bugs": "https://github.com/nberlette/malanna/issues",
+  "repository": "nberlette/malanna",
   "homepage": "https://malanna.page",
+  "bugs": "https://github.com/nberlette/malanna/issues",
   "readme": "https://github.com/nberlette/malanna#readme",
   "prismic": {
     "locale": "en-US",
@@ -31,6 +32,9 @@
     "access": "public",
     "registry": "https://npm.pkg.github.com",
     "tag": "latest"
+  },
+  "eslintConfig": {
+    "extends": "next"
   },
   "scripts": {
     "dev": "next",
@@ -59,15 +63,12 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@prefresh/babel-plugin": "^0.4.0",
-    "@tailwindcss/typography": "0.4.1",
     "@types/node": "16.11.9",
     "@types/react": "17.0.35",
-    "autoprefixer": "10.4.0",
+    "@windicss/plugin-animations": "^1.0.9",
+    "@windicss/plugin-heropatterns": "^0.0.8",
     "eslint": "<8.0.0",
     "eslint-config-next": "12.0.3",
-    "postcss": "8.4.5",
-    "sass": "^1.49.0",
-    "tailwindcss": "2.2.19",
     "tslib": "2.3.1",
     "typescript": "4.5.3",
     "webpack": "^5.0.0",

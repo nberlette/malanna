@@ -11,8 +11,8 @@ export default class MyDocument extends Document {
 	        <Meta />
 	      </Head>
         <body>
-          <GitHubCorner url={GITHUB_URL} />
           <Main />
+          <GitHubCorner url={GITHUB_URL} />
           <NextScript />
         </body>
       </Html>

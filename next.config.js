@@ -1,12 +1,8 @@
-import withPreact from 'next-plugin-preact'
-import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
+
+const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
 /** @type {import('next').NextConfig} */
-export default withPreact({
-  experimental: {
-    optimizeCss: true,
-    optimizeImages: true,
-  },
+module.exports = require('next-plugin-preact')({
 
   images: {
     domains: [
@@ -36,12 +32,12 @@ export default withPreact({
         destination: '/photos/:slug',
       },
       {
-        source: '/exit-preview/?:path*',
-        destination: 'api/exit-preview/:path'
+        source: '/exit-preview/:path*',
+        destination: '/api/exit-preview/:path'
       },
       {
-        source: '/preview/?:path*',
-        destination: 'api/preview/:path',
+        source: '/preview/:path*',
+        destination: '/api/preview/:path',
       },
       {
         source: '/github/:path*',

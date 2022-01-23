@@ -1,0 +1,201 @@
+/* purgecss start ignore */
+
+  :root {
+    --link-underline-color: #234;
+    --link-underline-height: 0.05em;
+    --link-underline-transition: 0.33s ease-in;
+    --link-underline-hover-color: #123;
+    --link-underline-hover-transform: scaleX(1);
+  }
+
+  .nav a,
+  .nav span {
+    white-space: nowrap;
+  }
+
+  a {
+    color: #234;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.33s;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: #123;
+    text-decoration: none !important;
+  }
+
+  a:not(.github-corner):not(.emphasized):before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: var(--link-underline-height, 1px);
+    bottom: 0;
+    left: 0;
+    background-color: var(--link-underline-color, #234);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: var(--link-underline-transition, 0.5s);
+  }
+
+  a:not(.github-corner):not(.emphasized):hover:before {
+    visibility: visible;
+    background-color: var(--link-underline-hover-color, #123);
+    transform: var(--link-underline-hover-transform, scaleX(1));
+  }
+  .layout-wrapper {
+    @apply min-h-screen;
+  }
+
+  /* header.header {} */
+  header.header > .title {
+    @apply md:text-4xl md:tracking-tighter mt-8 mb-20 text-2xl font-bold leading-tight tracking-tight;
+  }
+  header.header > .title::after {
+    content: ".";
+  }
+
+  .section-separator {
+    @apply border-accent-2 mt-28 mb-24;
+  }
+
+  .post-title {
+    @apply md:text-7xl lg:text-8xl text-6xl font-bold leading-tight tracking-tighter;
+    @apply md:leading-none md:text-left mb-12 text-center;
+  }
+  /* section.post--more-stories {} */
+    section.post--more-stories > h2.section-title {
+      @apply md:text-7xl mb-8 text-6xl font-bold leading-tight tracking-tighter;
+    }
+    section.post--more-stories > div.section-content {
+      @apply gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32 grid grid-cols-1 mb-32;
+    }
+  section.intro {
+    @apply md:flex-row md:justify-between md:mb-12 flex flex-col items-center mt-16 mb-16;
+  }
+    section.intro > .section-title {
+      @apply md:text-8xl md:pr-8 text-6xl font-bold leading-tight tracking-tighter;
+    }
+    section.intro > .section-subtitle {
+      @apply md:text-left md:pl-8 mt-5 text-lg text-center;
+    }
+  .post-body {
+    @apply max-w-2xl mx-auto;
+  }
+  /* section.post-header {} */
+    section.post-header > .author {
+      @apply md:block md:mb-12 hidden;
+    }
+    section.post-header > .cover-image {
+      @apply md:mb-16 sm:mx-0 mb-8;
+    }
+    section.post-header > .meta {
+      @apply max-w-2xl mx-auto;
+    }
+      section.post-header > .meta > .author {
+        @apply md:hidden block mb-6;
+      }
+      section.post-header > .meta > .date {
+        @apply mb-6 text-lg;
+      }
+  /* section.post-preview {} */
+    section.post-preview > .title {
+      @apply mb-3 text-3xl leading-snug;
+    }
+    section.post-preview > .cover-image {
+      @apply mb-5;
+    }
+    section.post-preview > .date {
+      @apply mb-4 text-lg;
+    }
+    section.post-preview > .excerpt {
+      @apply mb-4 text-lg leading-relaxed;
+    }
+  section.avatar {
+    @apply flex items-center;
+  }
+    section.avatar > .inner {
+      @apply relative w-12 h-12 mr-4;
+    }
+    section.avatar > .name {
+      @apply text-xl font-bold;
+    }
+  footer.footer {
+    @apply bg-accent-1 border-accent-2 border-t;
+  }
+    footer.footer .inner {
+      @apply py-28 lg:flex-row flex flex-col items-center;
+    }
+      footer.footer .inner > .tagline {
+        @apply lg:text-3xl lg:text-left lg:mb-0 lg:px-4 lg:w-1/2 mb-10 text-2xl font-bold leading-tight tracking-tighter text-center;
+      }
+      footer.footer .inner > .links {
+        @apply lg:flex-row lg:pl-4 lg:w-1/2 flex flex-col items-center justify-center;
+      }
+        footer.footer .inner > .links > .emphasized {
+          @apply hover:bg-white hover:text-black mx-3 font-bold text-white bg-black border-black;
+          @apply lg:px-8 lg:mb-0 px-12 py-3 mb-6 transition-all duration-500;
+          border: 3px solid black;
+          border-radius: 9999px;
+        }
+        footer.footer .inner > .links > .regular {
+          @apply hover:underline mx-3 font-bold;
+        }
+        .github-corner {
+          color: #fff !important; 
+          width: 80px;
+          height: 80px;
+          position: fixed;
+          top: 0; 
+          border: 0; 
+          right: 0;
+          z-index: 99999999;
+          opacity: 1;
+        }
+        .github-corner svg {
+          filter: drop-shadow(0em 0em 1em #fff);
+          width: 80px;
+          height: 80px;
+        }
+        .github-corner:hover {
+          border: none !important; 
+          text-decoration: none !important;
+        }
+        .github-corner:before, .github-corner:hover:before {
+          background-color: transparent !important;
+          visibility: none !important;
+          opacity: 0;
+        }
+        .github-corner svg {
+          fill: #123 !important;
+          color: #fff !important;
+        }
+        .github-corner .octo-arm {
+          transform-origin: 130px 106px;
+        }
+        .github-corner:hover .octo-arm {
+          animation: octocat-wave 666ms ease-in-out
+        }
+        @keyframes -global-octocat-wave {
+          0%, 100% { transform: rotate(0) }
+          20%, 60% { transform:rotate(-25deg) }
+          40%, 80% { transform:rotate(10deg) } 
+        }
+        @keyframes octocat-wave {
+          0%, 100% { transform: rotate(0) }
+          20%, 60% { transform:rotate(-25deg) }
+          40%, 80% { transform:rotate(10deg) } 
+        }
+        @media (max-width:500px) {
+          .github-corner, .github-corner svg {
+            width: 48px !important;
+            height: 48px !important;
+          }
+          .github-corner .octo-arm {
+            animation:none
+          }
+          .github-corner:hover .octo-arm { 
+            animation:octocat-wave 666ms ease-in-out
+          }
+        }

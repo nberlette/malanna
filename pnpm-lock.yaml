@@ -6,6 +6,8 @@ specifiers:
   '@tailwindcss/typography': 0.4.1
   '@types/node': 16.11.9
   '@types/react': 17.0.35
+  '@windicss/plugin-animations': ^1.0.9
+  '@windicss/plugin-heropatterns': ^0.0.8
   autoprefixer: 10.4.0
   classnames: 2.3.1
   date-fns: 2.22.1
@@ -54,6 +56,8 @@ devDependencies:
   '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.19
   '@types/node': 16.11.9
   '@types/react': 17.0.35
+  '@windicss/plugin-animations': 1.0.9
+  '@windicss/plugin-heropatterns': 0.0.8
   autoprefixer: 10.4.0_postcss@8.4.5
   eslint: 7.32.0
   eslint-config-next: 12.0.3_b48031a5c878e99c3168dc940031462b
@@ -858,6 +862,16 @@ packages:
       windicss: 3.4.3
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@windicss/plugin-animations/1.0.9:
+    resolution: {integrity: sha512-9WsQsPzLurkwV5zaMCwmylxfSHlQ1pPmzud4ysvMkMBRB7obub9ESmqlHefcCjEhatz/ZROi1U1XOuOPPUO1nA==}
+    dev: true
+
+  /@windicss/plugin-heropatterns/0.0.8:
+    resolution: {integrity: sha512-HaDXY9arOiscyEO6YJl3L/VU8nMHaLxg2nZKfnv+4L+BnSCcaoeAtmI7WbG6YV7amZcN6RZPvXSCHyUh9u+EyA==}
+    dependencies:
+      lodash: 4.17.21
     dev: true
 
   /@windicss/plugin-utils/1.6.3:
