@@ -52,7 +52,7 @@ export default function CoverImage({
       src={url}
       placeholder={'blur'}
       blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(width || 2000, height || 1000))}`}
-      layout="intrinsic"
+      layout="responsive"
     />
   );
 
