@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer bg-hero-bank-note-200">
       <Container>
         <div className="inner">
-          <h3 className="tagline">Malanna's memorial micro-site.</h3>
+          <h3 className="tagline">Malanna{"'"}s memorial micro-site.</h3>
           <div className="links">
             <a
               href={FOOTER_LINK_EM.url}
